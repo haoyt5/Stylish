@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>STYLISH - Profile Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="STYLISH 的會員頁面，經由Facebook Graph API登入。">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/component.css">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119518647-2"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-119518647-2');
+	</script>
+</head>
+<body>
+    <!-- Start FB LogIn -->
+    <script>
+			const renderLogInBlock = () => {
+				document.getElementById('shoppingcart-block').innerHTML = "";
+				document.getElementById('shoppingcart-block').innerHTML =`
+				<div class="login-wrapper u-flex-center">
+								<div class="user-logindiv">
+									<div class="item-row  u-flex-center"> 
+										<div class="user-image-div u-flex-center">
+											<div class="user-imagebox ">
+												<img class="user-image" src="" alt="">
+											</div>
+										</div>
+										<div class="user-infodiv ">
+											<label class="user-label" for="login_username" >姓名</label>
+											<p id="login_username" class="username">
+													<div class="visitor">尚未登入</div>
+											</p>
+											<label class="user-label" for="login_email">連絡信箱</label>
+											<p id="login_email" class="user-email">
+													<div class="visitor">尚未登入</div>
+											</p>
+										</div>
+									</div>
+									<div class="item-row u-flex-center u-white-backgroundcolor">
+										
+									</div>
+								</div>
+							</div>
+				`;
+			
+			}
+			const renderProfile = (json) =>{
+	
+				const {id,name, email , picture: { data: { url:imageUrl } } }=json;
+				let imageLargeUrl = `https://graph.facebook.com/${id}/picture?width=400`
+				document.getElementById('shoppingcart-block').innerHTML = "";
+				document.getElementById('shoppingcart-block').innerHTML =`
+				<div class="login-wrapper u-flex-center">
+								<div class="user-logindiv">
+									<div class="item-row  u-flex-center"> 
+										<div class="user-image-div u-flex-center">
+											<div class="user-imagebox ">
+												<img class="user-image" src="${imageLargeUrl}" alt="">
+											</div>
+										</div>
+										<div class="user-infodiv ">
+											<label class="user-label" for="login_username" >姓名</label>
+											<p id="login_username" class="username">
+													${name}
+											</p>
+											<label class="user-label" for="login_email">連絡信箱</label>
+											<p id="login_email" class="user-email">
+													${email || '未公開'}
+											</p>
+										</div>
+									</div>
+									<div class="item-row u-flex-center u-white-backgroundcolor">
+										<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+									</div>
+								</div>
+							</div>
+				`;
+			};
+			// This is called with the results from from FB.getLoginStatus().
+			function statusChangeCallback(response) {
+				console.log('statusChangeCallback');
+				console.log(response);
+				// The response object is returned with a status field that lets the
+				// app know the current login status of the person.
+				// Full docs on the response object can be found in the documentation
+				// for FB.getLoginStatus().
+				if (response.status === 'connected') {
+				// Logged into your app and Facebook.
+				localStorage.setItem('fbAccessToken', response.authResponse.accessToken);
+				testAPI();
+				console.log('Login successfully!');
+				} if(response.status === 'unknown'){
+					console.log('Logout!');
+					renderLogInBlock();
+				}
+				if(response.status === 'not_authorized') {
+				// The person is not logged into your app or we are unable to tell.
+				console.log('View as a visitor!')
+				}
+			}
+			function checkLoginState() {
+				FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+				});
+			}
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '261453534755556',
+					// appId      : '313032016232503', //localhost Test appId
+					cookie     : true,
+					xfbml      : true,
+					version    : 'v3.2'
+				});
+			
+				FB.getLoginStatus(function(response) {
+					
+					statusChangeCallback(response);
+					});
+	
+				};
+				
+			(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+	
+			function testAPI () {
+				console.log('Log into the Stylish! Fetching your information...');
+				FB.api('/me?fields=email,name,picture', function(response) {
+					console.log('Thanks for logging in, '+ response.name + '!');
+
+					console.log(response);
+					renderProfile(response);
+	
+				});
+			}
+			//     FB.AppEvents.logPageView();   
+				
+			//     FB.getLoginStatus(function(response) {
+					
+			// 		console.log(response);
+			// 		if (response.status === 'connected '){
+			// 			testAPI();
+			// 		}
+	
+			//     });
+			// };
+			
+	
+	
+	
+	
+	
+				
+	</script>
+    <!--End FB LogIn -->
+	<div class="wrapper">
+		<!-- Start Header -->
+		<header class="navbarwrapper bg-color-white">
+			<div class="container">
+				<div class="navbar u-clearfix">
+					<div class="logo navbar__logo">
+						<a href="./index.html">
+							<div class="logo-imgbox"><div class="logo-imgbox__image"></div></div>
+						</a>
+						<div class="navbar__menu">
+							<ul class="menu menu--horizontal u-clearfix">
+								<li><a id="women" href="./index.html" class="btn-catergories menu__item">女裝</a></li>
+								<li><a id="men" href="./index.html" class="btn-catergories menu__item">男裝</a></li>
+								<li><a id="accessories" href="./index.html" class="btn-catergories menu__item">配件</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="nav navbar__nav">
+						<div class="feature">
+							<div  class="searchbox">
+								<form action="#" onsubmit="return onSearchSubmit(event);">
+									<input id="desktopSearchInput" class="searchinput" type="text">
+<!-- 									<input type="image" src="images/search.png" alt="Submit feedback"> -->
+									<!-- <input type="submit" > -->
+								</form>
+							</div>
+							<a href="./cart.html">
+								<div class="shoppingcart feature-iconimage-box">
+									<div class="icon-image__shoppingcart">
+										<div class="current-item__shoppingcart">--</div>
+									</div>
+								</div>
+							</a>
+							<a href="./profile.html">
+								<div class="member">
+									<div class="icon-image__member"></div>
+								</div>
+							</a>
+							<a href="#popup-search" class="search">
+								<div class="icon-image__search"></div>
+							</a>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="sub-navbar bg-color-default">
+				<div class="container">
+					<div class="menu__sub-navbar">
+						<a href="./index.html"><div id="women" class="btn-catergories item__sub-navbar">女裝</div></a>|
+						<a href="./index.html"><div id="men" class="btn-catergories item__sub-navbar">男裝</div></a>|
+						<a href="./index.html"><div id="accessories" class="btn-catergories item__sub-navbar">配件</div></a>
+					</div>
+				</div>
+			</div>
+			<div id="popup-search" class="mobile-searchbox">
+					<div class="container">
+						<form action="#" onsubmit="return onSearchSubmit(event);">
+							<input id="mobileSearchInput" class="mobile-searchform " type="text">
+						</form>
+					</div>
+					<a href="#!" class="popup-menu__close">
+						<span></span>
+						<span></span>
+					</a>	
+			</div>
+		</header>
+		<div class="feature-barwrapper">
+			<div class="sub-footerbar bg-color-default">
+				<div class="container">
+					<div class="mobile-feature-bar">
+						<a class="mobile-item" href="./cart.html">
+							<div class="mobile-iconbox">
+							<div class="shoopingcart__mobile-iconbox">
+								<div class="current-item__shoppingcart">--</div>
+							</div>
+							</div>				
+							<p>購物車</p>
+						</a>|
+						<a class="mobile-item" href="./profile.html">
+							<div class="mobile-iconbox">
+							<div class="member__mobile-iconbox"></div>
+							</div>	
+							<p>會員</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Header -->
+
+		<!-- Start Section -->
+		<section class="main givePadding">
+            <!-- Start-shopping Cart Section -->
+            <div class="shopping-cart-section u-cart-padding">
+                <div class="container">
+                    <div class="path u-path-padding row">
+                    </div> 
+                </div>
+                <!-- Start the shoppingCart Wrapper -->
+                <div class="container">
+                    <div class="shoppingcart-wrapper">
+                        <div id="shoppingcart-block" class="login-block">
+
+                            <!-- Empty Sign -->
+                            <div class="login-wrapper u-flex-center">
+								<div class="user-logindiv">
+									<div class="item-row  u-flex-center"> 
+										<div class="user-image-div u-flex-center">
+											<div class="user-imagebox ">
+												<img class="user-image" src="" alt="">
+											</div>
+										</div>
+										<div class="user-infodiv ">
+											<label class="user-label" for="login_username" >姓名</label>
+											<p id="login_username" class="username">
+													<div class="visitor">尚未登入</div>
+											</p>
+											<label class="user-label" for="login_email">連絡信箱</label>
+											<p id="login_email" class="user-email">
+													<div class="visitor">尚未登入</div>
+											</p>
+										</div>
+									</div>
+
+								</div>
+                            </div>
+							 <!-- Empty Sign -->
+							 
+						</div>
+						<div class="item-row u-flex-center u-white-backgroundcolor">
+								<fb:login-button  autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState() "></fb:login-button>
+							</div>
+                    </div>
+                </div>
+                <!-- End the shoppingCart Wrapper -->
+            <div>  
+            <!-- End shopping Cart Section -->
+			<div class="section">
+                <div class="container u-mobile-section-lr-margin">
+                     <div class="shoppingwrapper u-section-tp-margin u-section-btm-margin ">
+                        <div id="list" class="row u-section-margin">
+                        <!-- <div class="elements">Connect with the Search API</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start the main product page -->
+            <div class="product u-product-tb-padding"></div>
+            <!-- End the main product page -->
+		</section>
+		<!-- End Section -->
+
+		<!-- Start Footer -->
+		<footer class="mobile-footer footer bg-color-default">
+				<div class="container">
+					<div class="footerbar">
+						<div class="infobar___footerbar">
+								<a href="#"><div class="item-infobar">關於 Stylish</div></a>
+								<a href="#"><div class="item-infobar">服務條款</div></a>
+								<a href="#"><div class="item-infobar">隱私政策</div></a>
+								<a href="#"><div class="item-infobar">聯絡我們</div></a>
+								<a href="#"><div class="item-infobar">FAQ</div></a>
+						</div>
+						<div class="socialmenu footerbar__socialmenu">
+							<a href="#"><div class="social-iconbox"><div class="social-iconbox__image" style=" background-image: url('./images/line.png')"></div></div></a>
+							<a href="#"><div class="social-iconbox"><div class="social-iconbox__image" style=" background-image: url('./images/twitter.png')"></div></div></a>
+							<a href="#"><div class="social-iconbox"><div class="social-iconbox__image" style=" background-image: url('./images/facebook.png')"></div></div></a>
+							<p class="copyrightbox">©2018. All rights reserved.</p>
+						</div>
+					</div>
+					<p class="mobile-copyrightbox">©2018. All rights reserved.</p>
+		
+				</div>
+				
+		</footer>
+		<!-- End Footer -->
+    </div>
+	<script src="./js/shoppingcart.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "web-front-end-2019-spring",
+  "version": "1.0.0",
+  "description": "## Outline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoyt5/Web-Front-End-2019-Spring.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haoyt5/Web-Front-End-2019-Spring/issues"
+  },
+  "homepage": "https://github.com/haoyt5/Web-Front-End-2019-Spring#readme",
+  "devDependencies": {
+    "eslint": "^5.15.1"
+  }
+}

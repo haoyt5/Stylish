@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>STYLISH - Cart Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="STYLISH 的結帳購物車，填寫收件資訊與信用卡資料訂購與結帳購物車裡選購的商品">
+	<link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/component.css">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119518647-2"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-119518647-2');
+	</script>
+    <style>
+     .tpfield {
+        height: 40px;
+        width: 300px;
+        border: 1px solid gray;
+        margin: 5px 0;
+        padding: 5px;
+    }
+        .tappay-field-focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+    </style>
+</head>
+<body>
+    <!-- Check FB Login -->
+    <script src="./js/checklogin.js"></script>
+    <!-- Check FB Login -->
+	<div class="wrapper">
+		<!-- Start Header -->
+		<header class="navbarwrapper bg-color-white">
+			<div class="container">
+				<div class="navbar u-clearfix">
+					<div class="logo navbar__logo">
+						<a href="./index.html">
+							<div class="logo-imgbox"><div class="logo-imgbox__image"></div></div>
+						</a>
+						<div class="navbar__menu">
+							<ul class="menu menu--horizontal u-clearfix">
+								<li><a id="women" href="./index.html" class="btn-catergories menu__item">女裝</a></li>
+								<li><a id="men" href="./index.html" class="btn-catergories menu__item">男裝</a></li>
+								<li><a id="accessories" href="./index.html" class="btn-catergories menu__item">配件</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="nav navbar__nav">
+						<div class="feature">
+							<div  class="searchbox">
+								<form action="#" onsubmit="return onSearchSubmit(event);">
+									<input id="desktopSearchInput" class="searchinput" type="text">
+<!-- 									<input type="image" src="images/search.png" alt="Submit feedback"> -->
+									<!-- <input type="submit" > -->
+								</form>
+							</div>
+							<a href="./cart.html">
+								<div class="shoppingcart feature-iconimage-box">
+									<div class="icon-image__shoppingcart">
+										<div class="current-item__shoppingcart">--</div>
+									</div>
+								</div>
+							</a>
+							<a href="./profile.html">
+								<div class="member">
+									<div class="icon-image__member"></div>
+								</div>
+							</a>
+							<a href="#popup-search" class="search">
+								<div class="icon-image__search"></div>
+							</a>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="sub-navbar bg-color-default">
+				<div class="container">
+					<div class="menu__sub-navbar">
+						<a href="./index.html"><div id="women" class="btn-catergories item__sub-navbar">女裝</div></a>|
+						<a href="./index.html"><div id="men" class="btn-catergories item__sub-navbar">男裝</div></a>|
+						<a href="./index.html"><div id="accessories" class="btn-catergories item__sub-navbar">配件</div></a>
+					</div>
+				</div>
+			</div>
+			<div id="popup-search" class="mobile-searchbox">
+					<div class="container">
+						<form action="#" onsubmit="return onSearchSubmit(event);">
+							<input id="mobileSearchInput" class="mobile-searchform " type="text">
+						</form>
+					</div>
+					<a href="#!" class="popup-menu__close">
+						<span></span>
+						<span></span>
+					</a>	
+			</div>
+		</header>
+		<div class="feature-barwrapper">
+			<div class="sub-footerbar bg-color-default">
+				<div class="container">
+					<div class="mobile-feature-bar">
+						<a class="mobile-item" href="./cart.html">
+							<div class="mobile-iconbox">
+							<div class="shoopingcart__mobile-iconbox">
+								<div class="current-item__shoppingcart">--</div>
+							</div>
+							</div>				
+							<p>購物車</p>
+						</a>|
+						<a class="mobile-item" href="./profile.html">
+							<div class="mobile-iconbox">
+							<div class="member__mobile-iconbox"></div>
+							</div>	
+							<p>會員</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Header -->
+
+		<!-- Start Section -->
+		<section class="main givePadding">
+            <div class="shopping-cart-section u-cart-padding">
+                <div class="container">
+                    <div class="path u-path-padding row">
+                    <a href="./index.html">HOME</a> > <a href="./cart.html">BAG</a>
+                    </div> 
+                </div>
+                <div class="container">
+                    <div class="shoppingcart-wrapper">
+                        <div class="item-row u-labelrow-padding">
+                            <div class="col-6-12">
+                                <div class="bag-count">3</div>                                    
+                            </div>
+                            <div class="card-5-36 desktop-remove">
+                                <div class="label-titel">數量</div>
+                            </div>
+                            <div class="card-5-36 desktop-remove">
+                                <div class="label-titel">單價</div>
+                            </div>
+                            <div class="card-5-36 desktop-remove">
+                                <div class="label-titel">小計</div>
+                            </div>
+                        </div>
+                        <div class="item-row u-flex-center mobile-remove">
+                        <hr>
+                        </div>
+                        <div id="shoppingcart-block" class="shoppingcart-block">
+                            <!-- Empty Sign -->
+                            <div class="item-shippingcart-wrapper u-flex-cente">
+                                <div class="item-row">
+                                    <p class="empty-words">您的購物車尚未加入任何商品</p>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- Empty Sign -->
+                            <!--First  -->
+                            <!-- <div class="item-shippingcart-wrapper">
+                                <div class="item-row u-flex-center">
+                                    <div class="card-2-12 ">
+                                        <div class="cart-main-imagebox ">
+                                            <div class="cart-imagebox-inner">
+                                                <img class="cart-image" src="http://18.214.165.31/assets/201902191247/main.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-3-12">
+                                        <div class="cart-item-info">
+                                            <div class="cart-item-tittle">經典修身長筒牛仔褲</div>
+                                            <div class="cart-item-id">201902191247</div>
+                                            <div class="cart-item-color">白色</div>
+                                            <div class="cart-item-size">S</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-1-12 u-holder ">
+                                        <div class="cart-removebox mobile-remove">
+                                            <div class="cart-removebox-inner">
+                                                <div class="icon-removecart"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-5-36 desktop-remove">
+                                        <div class="card-info unit-count">
+                                            <select name="count" id="unit_quantity">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-5-36 desktop-remove">
+                                        <div class="card-info unit-price">590</div>
+                                    </div>
+                                    <div class="card-5-36 desktop-remove ">
+                                        <div class="card-info unit-sum">590</div>
+                                    </div>
+                                    <div class="card-1-12 desktop-remove">
+                                        <div class="card-info">
+                                            <div class="cart-removebox">
+                                                <div class="cart-removebox-inner">
+                                                    <div class="icon-removecart"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-row u-flex-center mobile-remove">
+                                    <div class="card-1-3">
+                                        <div class="mobile-unit-label">數量</div>
+                                        <div class="card-info unit-count">
+                                            <select name="count" id="unit_quantity">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-1-3">
+                                        <div class="mobile-unit-label">單價</div>
+                                        <div class="card-info unit-price">590</div>
+                                    </div>
+                                    <div class="card-1-3">
+                                        <div class="mobile-unit-label">小計</div>
+                                        <div class="card-info unit-sum">590</div>
+                                    </div>
+                                </div> -->
+                                <!-- Mobile Hr -->
+                                <!-- <div class="item-row u-flex-center mobile-remove u-item-hr">
+                                    <hr>
+                                </div> -->
+                                <!-- Mobile Hr -->
+                            <!-- </div> -->
+                            <!--First  -->
+                            
+                            <!-- Second -->
+                            <!-- <div class="item-shippingcart-wrapper">
+                                    <div class="item-row u-flex-center">
+                                        <div class="card-2-12 ">
+                                            <div class="cart-main-imagebox ">
+                                                <div class="cart-imagebox-inner">
+                                                    <img class="cart-image" src="http://18.214.165.31/assets/201902191247/main.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-3-12">
+                                            <div class="cart-item-info">
+                                                <div class="cart-item-tittle">經典修身長筒牛仔褲</div>
+                                                <div class="cart-item-id">201902191247</div>
+                                                <div class="cart-item-color">白色</div>
+                                                <div class="cart-item-size">S</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-1-12 u-holder ">
+                                            <div class="cart-removebox mobile-remove">
+                                                <div class="cart-removebox-inner">
+                                                    <div class="icon-removecart"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-5-36 desktop-remove">
+                                            <div class="card-info unit-count">
+                                                <select name="count" id="unit_quantity">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="card-5-36 desktop-remove">
+                                            <div class="card-info unit-price">590</div>
+                                        </div>
+                                        <div class="card-5-36 desktop-remove ">
+                                            <div class="card-info unit-sum">590</div>
+                                        </div>
+                                        <div class="card-1-12 desktop-remove">
+                                            <div class="card-info">
+                                                <div class="cart-removebox">
+                                                    <div class="cart-removebox-inner">
+                                                        <div class="icon-removecart"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-row u-flex-center mobile-remove">
+                                        <div class="card-1-3">
+                                            <div class="mobile-unit-label">數量</div>
+                                            <div class="card-info unit-count">
+                                                <select name="count" id="unit_quantity">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="card-1-3">
+                                            <div class="mobile-unit-label">單價</div>
+                                            <div class="card-info unit-price">590</div>
+                                        </div>
+                                        <div class="card-1-3">
+                                            <div class="mobile-unit-label">小計</div>
+                                            <div class="card-info unit-sum">590</div>
+                                        </div>
+                                    </div> -->
+                                    <!-- Mobile Hr -->
+                                    <!-- <div class="item-row u-flex-center mobile-remove u-item-hr">
+                                        <hr>
+                                    </div> -->
+                                    <!-- Mobile Hr -->
+                            <!-- </div> -->
+                            <!-- Second -->
+                            <!-- Third -->
+                            <!-- <div class="item-shippingcart-wrapper">
+                                    <div class="item-row u-flex-center">
+                                        <div class="card-2-12 ">
+                                            <div class="cart-main-imagebox ">
+                                                <div class="cart-imagebox-inner">
+                                                    <img class="cart-image" src="http://18.214.165.31/assets/201902191247/main.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-3-12">
+                                            <div class="cart-item-info">
+                                                <div class="cart-item-tittle">經典修身長筒牛仔褲</div>
+                                                <div class="cart-item-id">201902191247</div>
+                                                <div class="cart-item-color">白色</div>
+                                                <div class="cart-item-size">S</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-1-12 u-holder ">
+                                            <div class="cart-removebox mobile-remove">
+                                                <div class="cart-removebox-inner">
+                                                    <div class="icon-removecart"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-5-36 desktop-remove">
+                                            <div class="card-info unit-count">
+                                                <select name="count" id="unit_quantity">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="card-5-36 desktop-remove">
+                                            <div class="card-info unit-price">590</div>
+                                        </div>
+                                        <div class="card-5-36 desktop-remove ">
+                                            <div class="card-info unit-sum">590</div>
+                                        </div>
+                                        <div class="card-1-12 desktop-remove">
+                                            <div class="card-info">
+                                                <div class="cart-removebox">
+                                                    <div class="cart-removebox-inner">
+                                                        <div class="icon-removecart"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-row u-flex-center mobile-remove">
+                                        <div class="card-1-3">
+                                            <div class="mobile-unit-label">數量</div>
+                                            <div class="card-info unit-count">
+                                                <select name="count" id="unit_quantity">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="card-1-3">
+                                            <div class="mobile-unit-label">單價</div>
+                                            <div class="card-info unit-price">590</div>
+                                        </div>
+                                        <div class="card-1-3">
+                                            <div class="mobile-unit-label">小計</div>
+                                            <div class="card-info unit-sum">590</div>
+                                        </div>
+                                    </div> -->
+                                    <!-- Mobile Hr -->
+                                    <!-- <div class="item-row u-flex-center mobile-remove u-item-hr">
+                                        <hr>
+                                    </div> -->
+                                    <!-- Mobile Hr -->
+                            <!-- </div> -->
+                            <!-- Third -->
+
+                </div>
+            </div>
+            <div id="payment-block" class="payment-block  u-product-tb-padding ">
+                <div class="container">
+                    <!-- Start the paymnet dropdown selection-->
+                    <div class="payment-wrapper u-grey-backgroundcolor u-payment-tb-padding">
+                        <div class="item-row">
+                            <div class="col-7-24">
+                                <div class="u-flex">
+                                    <label class="payment-label" for="shipment">配送國家</label>
+                                    <select class="payment-dropdown" name="shipment" id="shipment">
+                                        <option value="domestic">臺灣及離島</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-7-24">
+                                <div class="u-flex">
+                                    <label  class="payment-label" for="payment">付款方式</label>
+                                    <select class="payment-dropdown" name="payment" id="payment">
+                                    <option value="to_door">宅配貨到付款</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- End the paymnet dropdown selection-->
+                    <!-- Start the notification div-->
+                    <div class="payment-notification-wrapper u-payment-tb-padding">
+                        <div class="notification-graph">
+                            ※ 提醒您：<br>
+                            ● 選擇宅配-請填寫正確收件人資訊，避免包裹配送不達<br>
+                            ● 選擇超商-請填寫正確收件人姓名(與證件相符)，避免無法領取
+                        </div>
+                    </div>
+                    <!-- End the notification div-->
+                </div>
+             </div> 
+             <!-- Start order information -->
+             <div id="order-info-block" class="order-info">
+                 <div class="container">
+                     <div class="order-heading">
+                         訂購資料
+                     </div>
+                     <hr>
+                     <div class="order-row">
+                        <label for="order-name" class="label-name">收件人姓名</label>
+                        <input type="text" id="order-name" class="input-order"><br>
+                        <div class="notification-words">
+                            <span class="u-float-right">務必填寫完整收件人姓名，避免包裹無法順利簽收</span>
+                        </div>
+                     </div>
+                     <div class="order-row">
+                     <label for="order-phone" class="label-order">手機</label>
+                     <input type="tel" id="order-phone" class="input-order"><br>
+                    </div>
+                    <div class="order-row">
+                     <label for="order-address" class="label-order">地址</label>
+                     <input type="text" id="order-address" class="input-order"><br>
+                    </div>
+                    <div class="order-row">
+                        <label for="order-email" class="label-order">Email</label>
+                        <input type="text" id="order-email" class="input-order"><br>
+                    </div>
+                   <div class="order-row"> 
+                    <label class="label-time">配送時間</label>
+                     <input type="radio" id="for_8_12" value="for_8_12" name="delivery_time"><label class="radio-order" for="for_8_12">08:00-12:00</label>
+                     <input type="radio" id="for_14_16" value="for_14_16" name="delivery_time"><label class="radio-order" for="for_14_16">14:00-18:00</label>
+                     <input type="radio" id="for_anytime" value="for_anytime" name="delivery_time"><label class="radio-order" for="for_anytime">不指定</label>
+                    </div>
+                 </div>
+             </div>
+             <!-- End order information -->
+             <!-- Start payment form -->
+             <div id="payment-card-block" class="order-info  u-product-tb-padding">
+                <div class="container ">
+                    <div class="order-heading">
+                        信用卡
+                    </div>
+                    <hr>
+                    <div class="order-row">
+                        <label class="label-credictcard">信用卡片號碼</label>
+                        <div class="tpfield" id="card-number"></div>
+                        <label class="label-credictcard">卡片到期日</label>
+                        <div class="tpfield" id="card-expiration-date"></div>
+                        <label class="label-credictcard">卡片後三碼</label>
+                        <div class="tpfield" id="card-ccv"></div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <!-- End payment form information -->
+             
+             <div id="order-sum-block" class="order-sum">
+                 <div class="container">
+                     <div class="item-row">
+                         <div class="col-r-3-12">
+                             <div class="item-row u-padding-tb-sum">
+                                <div class="col-3-24">
+                                    <div class="label-sum">總金額</div>
+                                </div>
+                                <div class="col-3-24">
+                                    <div class="amount">1170</div>
+                                </div>
+                             </div>
+                             <div class="item-row u-padding-tb-sum">
+                                <div class="col-3-24">
+                                    <div class="label-sum">運費</div>
+                                </div>
+                                <div class="col-3-24">
+                                    <div class="amount">30</div>
+                                </div>
+                            </div>
+                             <div class="item-row">
+                             <hr>
+                             </div>
+                             <div class="item-row u-padding-tb-sum">
+                                <div class="col-3-24">
+                                    <div class="label-sum">應付金額</div>
+                                </div>
+                                <div class="col-3-24">
+                                    <div class="amount">1800</div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="item-row">
+                         <div class="col-r-btn-3-12">
+                            <div class="buttonwrapper u-padding-tb-sum u-padding-button-t">
+                                <button class="checkout-button" type="submit" onclick="onSubmit()">確認付款</button>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        <div>  
+			<div class="section">
+                <div class="container u-mobile-section-lr-margin">
+                     <div class="shoppingwrapper u-section-tp-margin u-section-btm-margin ">
+                        <div id="list" class="row u-section-margin">
+                        <!-- <div class="elements">Connect with the Search API</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start the main product page -->
+            <div class="product u-product-tb-padding"></div>
+            <!-- End the main product page -->
+		</section>
+		<!-- End Section -->
+
+		<!-- Start Footer -->
+		<footer class="mobile-footer footer bg-color-default">
+				<div class="container">
+					<div class="footerbar">
+						<div class="infobar___footerbar">
+								<a href="#"><div class="item-infobar">關於 Stylish</div></a>
+								<a href="#"><div class="item-infobar">服務條款</div></a>
+								<a href="#"><div class="item-infobar">隱私政策</div></a>
+								<a href="#"><div class="item-infobar">聯絡我們</div></a>
+								<a href="#"><div class="item-infobar">FAQ</div></a>
+						</div>
+						<div class="socialmenu footerbar__socialmenu">
+							<a href="#"><div class="social-iconbox"><div class="social-iconbox__image" style=" background-image: url('./images/line.png')"></div></div></a>
+							<a href="#"><div class="social-iconbox"><div class="social-iconbox__image" style=" background-image: url('./images/twitter.png')"></div></div></a>
+							<a href="#"><div class="social-iconbox"><div class="social-iconbox__image" style=" background-image: url('./images/facebook.png')"></div></div></a>
+							<p class="copyrightbox">©2018. All rights reserved.</p>
+						</div>
+					</div>
+					<p class="mobile-copyrightbox">©2018. All rights reserved.</p>
+		
+				</div>
+				
+		</footer>
+		<!-- End Footer -->
+    </div>
+    <script src="./js/cart.js"></script>
+    <script src="./js/shoppingcart.js"></script>
+    <script src="https://js.tappaysdk.com/tpdirect/v4"></script>
+    <script src="./js/tappay.js"></script>
+</body>
+</html>

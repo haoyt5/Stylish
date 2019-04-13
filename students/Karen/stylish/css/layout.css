@@ -1,0 +1,64 @@
+/*
+ * Template Name Layout Setting 
+ * Description
+ * Vertion
+ * Copyright
+ * Author 
+ * Last Modified Date
+ *
+ */
+/*-------------------------*/
+/* $Catalog 
+---------------------------*/
+/** 
+ * Catalog
+ * Grid
+ * Other Layout
+**/
+
+/*-------------------------*/
+/* $Grid
+---------------------------*/
+
+/* Global */
+*{
+    position: relative;
+    box-sizing: border-box;
+}
+body{
+    color: #3f3a3a;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Noto Sans TC','Roboto', sans-serif;
+}
+/* Custom */
+.wrapper{
+    overflow: hidden;
+}
+.u-clearfix:before,
+.u-clearfic:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after, {
+    content: " ";
+    display: table;
+}
+.u-clearfix:after,
+.container:after,
+.container-fluid:after,
+.row:after{
+    clear: both;
+}
+/*-------------------------*/
+/* $Other Layout
+---------------------------*/
